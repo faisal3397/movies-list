@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+        <img src={{movie.posterUrl}}
+             alt="Poster"
+             class="img-responsive"
+             style="max-height: 200px">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>{{movie.title}} ({{movie.year}})</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Genre: {{movie.genre}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <p>Plot: {{movie.plot}}</p>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-success">
+          Add to Watch List
+        </button>
+      </div>
+    </div>
+</div>
