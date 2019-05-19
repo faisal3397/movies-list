@@ -1,8 +1,14 @@
 <div class="row">
   <div class="col-md-5">
-    <app-movies-list></app-movies-list>
+    <app-movies-list (movieWasSelected)="onMovieWasSelected($event)"></app-movies-list>
   </div>
   <div class="col-md-7">
-    <app-movie-detail></app-movie-detail>
+    <app-movie-detail
+     [movie]="movie"
+     *ngIf="movie; else info"
+     (toAddClicked)="movieToAdd($event)"></app-movie-detail>
+    <ng-template #info>
+      <h4>Please select a Movie</h4>
+    </ng-template>
   </div>
 </div>

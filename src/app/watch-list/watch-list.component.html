@@ -14,7 +14,7 @@
           <h4>{{movie.title}} ({{movie.year}})</h4>
         </div>
         <span class="pull-right">
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" (click)="remove(movie)">
               Remove from Watch List
             </button>
         </span>
@@ -22,3 +22,4 @@
 
   </div>
 </div>
+<hr>

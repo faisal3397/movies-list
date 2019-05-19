@@ -1,11 +1,14 @@
 
-<app-header></app-header>
+<app-header (pageSelected)="onNavigate($event)"></app-header>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-movies></app-movies>
-            <hr>
-            <app-watch-list></app-watch-list>
+            <app-movies
+             *ngIf="navigateTo === 'movies'"
+             (addMovieToWatchList)="addToList($event)"></app-movies>
+            <app-watch-list
+             *ngIf="navigateTo === 'watchList'"
+             [movies]="watchList"></app-watch-list>
         </div>
     </div>
 </div>
