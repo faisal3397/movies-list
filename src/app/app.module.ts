@@ -10,6 +10,7 @@ import { MoviesListComponent } from './movies/movies-list/movies-list.component'
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { MovieItemComponent } from './movies/movies-list/movie-item/movie-item.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MovieItemComponent } from './movies/movies-list/movie-item/movie-item.c
     MoviesListComponent,
     MovieDetailComponent,
     HeaderComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
