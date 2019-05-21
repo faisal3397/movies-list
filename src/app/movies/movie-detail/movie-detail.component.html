@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="movie; else info">
   <div class="row">
     <div class="col-xs-12">
         <img src={{movie.posterUrl}}
@@ -24,9 +24,13 @@
   </div>
   <div class="row">
       <div class="col-xs-12">
-        <button class="btn btn-success" (click)="toBeAdded(movie)">
+        <button class="btn btn-success" (click)="addToWatchList(movie)">
           Add to Watch List
         </button>
       </div>
     </div>
 </div>
+
+<ng-template #info>
+  <h4>Please select a Movie</h4>
+</ng-template>

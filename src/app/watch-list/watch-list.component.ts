@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../movies/movie.model';
+import { MovieService } from '../movies/movie.service';
 @Component({
   selector: 'app-watch-list',
   templateUrl: './watch-list.component.html',
@@ -8,15 +9,15 @@ import { Movie } from '../movies/movie.model';
 export class WatchListComponent implements OnInit {
 
 
-  @Input() movies: Movie[];
+  watchlistMovies: Movie[];
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+    this.watchlistMovies = this.movieService.watchList;
   }
 
   remove(movie: Movie){
-    let index = this.movies.indexOf(movie);
-    this.movies.splice(index, 1);
+    this.movieService.removeFromWatchlist(movie);
   }
 }

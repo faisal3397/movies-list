@@ -9,12 +9,8 @@ import { Movie } from './movies/movie.model';
 export class AppComponent {
   title = 'movies-list';
   navigateTo = 'movies';
-  watchList: Movie[] = [];
   onNavigate(page: string){
     this.navigateTo = page;
   }
 
-  addToList(toAdd: Movie){
-    this.watchList.push(toAdd);
-  }
 }

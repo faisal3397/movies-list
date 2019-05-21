@@ -4,11 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <app-movies
-             *ngIf="navigateTo === 'movies'"
-             (addMovieToWatchList)="addToList($event)"></app-movies>
+             *ngIf="navigateTo === 'movies'"></app-movies>
             <app-watch-list
-             *ngIf="navigateTo === 'watchList'"
-             [movies]="watchList"></app-watch-list>
+             *ngIf="navigateTo === 'watchList'"></app-watch-list>
         </div>
     </div>
 </div>

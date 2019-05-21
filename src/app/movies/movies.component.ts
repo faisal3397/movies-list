@@ -7,20 +7,9 @@ import { Movie } from './movie.model';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  movie: Movie;
-  @Output() addMovieToWatchList = new EventEmitter<Movie>();
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onMovieWasSelected(selectedMovie: Movie){
-    this.movie = selectedMovie;
-  }
-
-  movieToAdd(movieToAdd: Movie){
-    // console.log("movie to add ",movieToAdd);
-    this.addMovieToWatchList.emit(movieToAdd)
   }
 
 }

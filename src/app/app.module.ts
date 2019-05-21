@@ -11,6 +11,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
 import { HeaderComponent } from './header/header.component';
 import { MovieItemComponent } from './movies/movies-list/movie-item/movie-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { MovieService } from './movies/movie.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
