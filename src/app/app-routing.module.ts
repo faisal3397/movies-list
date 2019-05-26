@@ -5,11 +5,13 @@ import { WatchListComponent } from './watch-list/watch-list.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { MoviesStartComponent } from './movies/movies-start/movies-start.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
+import { MoviesSearchComponent } from './movies/movies-search/movies-search.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/movies', pathMatch: 'full'},
   {path: 'movies', component: MoviesComponent, children: [
     {path: '', component: MoviesStartComponent},
+    {path: 'search', component: MoviesSearchComponent},
     {path: 'new', component: EditMoviesComponent},
     {path: ':id', component: MovieDetailComponent},
     {path: ':id/edit', component: EditMoviesComponent}

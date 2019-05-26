@@ -14,6 +14,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { MovieService } from './movies/movie.service';
 import { MoviesStartComponent } from './movies/movies-start/movies-start.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
+import { MoviesSearchComponent } from './movies/movies-search/movies-search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component'
     MovieItemComponent,
     DropdownDirective,
     MoviesStartComponent,
-    EditMoviesComponent
+    EditMoviesComponent,
+    MoviesSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
