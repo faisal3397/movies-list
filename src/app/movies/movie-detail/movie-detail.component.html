@@ -1,4 +1,4 @@
-<div class="container" *ngIf="movie; else info">
+<div class="container">
   <div class="row">
     <div class="col-xs-12">
         <img src={{movie.posterUrl}}
@@ -23,14 +23,16 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-3">
         <button class="btn btn-success" (click)="addToWatchList(movie)">
           Add to Watch List
         </button>
       </div>
+      <div class="col-xs-6">
+        <a
+        role="button"
+        class="btn btn-primary"
+        [routerLink]="['/movies',movie.id,'edit']">Edit Movie</a>
+      </div>
     </div>
 </div>
-
-<ng-template #info>
-  <h4>Please select a Movie</h4>
-</ng-template>

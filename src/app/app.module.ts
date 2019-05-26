@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { MovieItemComponent } from './movies/movies-list/movie-item/movie-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { MovieService } from './movies/movie.service';
+import { MoviesStartComponent } from './movies/movies-start/movies-start.component';
+import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MovieService } from './movies/movie.service';
     MovieDetailComponent,
     HeaderComponent,
     MovieItemComponent,
-    DropdownDirective
+    DropdownDirective,
+    MoviesStartComponent,
+    EditMoviesComponent
   ],
   imports: [
     BrowserModule,

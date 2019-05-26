@@ -9,8 +9,8 @@ import { Movie } from './movies/movie.model';
 export class AppComponent {
   title = 'movies-list';
   navigateTo = 'movies';
-  onNavigate(page: string){
-    this.navigateTo = page;
-  }
+  // onNavigate(page: string){
+  //   this.navigateTo = page;
+  // }
 
 }

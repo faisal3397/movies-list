@@ -1,7 +1,8 @@
-<a href="#"
+<a
+style="cursor: pointer"
 class="list-group-item clearfix"
-(click)="onMovieClick()">
-
+[routerLink]="['/movies',movie.id]"
+routerLinkActive="active">
 <div class="pull-left">
    <h4 class="list-group-item-heading">{{movie.title}} ({{movie.year}})</h4>
    <p class="list-group-item-text">Genre: {{movie.genre}}</p>

@@ -14,10 +14,4 @@ export class MovieItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  onMovieClick(){
-    this.movieService.movie = this.movie;
-    this.movieService.movieSelected.emit(this.movie);
-  }
-
 }
