@@ -1,5 +1,4 @@
 import { Movie } from './movie.model';
-import { EventEmitter } from '@angular/core';
 
 export class MovieService {
     movie1 = new Movie(1,
@@ -29,8 +28,6 @@ export class MovieService {
     movies: Movie[] = [this.movie1, this.movie2, this.movie3, this.movie4];
     movie: Movie;
     watchList: Movie[] = [];
-    movieSelected = new EventEmitter<Movie>();
-
 
     addToWatchlist(movie: Movie){
         this.watchList.push(movie);
