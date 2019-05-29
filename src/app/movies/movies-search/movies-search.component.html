@@ -1,9 +1,13 @@
-<div class="form-group">
-  <label for="movieTitle">Search for Movie </label>
-  <input class="form-control" type="text" placeholder="Search for Movie" [(ngModel)]="title">
-</div>
-<button class="btn btn-primary" (click)="onSearch()">Search</button>
-
+<form [formGroup]="searchMovieForm" (ngSubmit)="onSearch()">
+    <div class="form-group">
+        <label for="movieTitle">Search for Movie </label>
+        <input class="form-control" type="text" placeholder="Search for Movie" id="movieTitle" formControlName="movieTitle">
+        <span
+        *ngIf="!searchMovieForm.get('movieTitle').valid && searchMovieForm.get('movieTitle').touched" 
+        class="help-block">Please enter a valid title!</span>
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
 <div class="row" style="margin-top: 10%">
   <div class="col-xs-12">
       <div *ngIf="resultMovie != null">

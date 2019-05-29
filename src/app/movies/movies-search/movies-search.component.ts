@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movies-search',
@@ -11,12 +12,18 @@ import { MovieService } from '../movie.service';
 export class MoviesSearchComponent implements OnInit {
   title = '';
   resultMovie: Movie;
+  searchMovieForm: FormGroup;
   constructor(private httpClient: HttpClient, private movieService: MovieService) { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.searchMovieForm = new FormGroup({
+      'movieTitle': new FormControl(null, Validators.required)
+    });
   }
 
   onSearch() {
+    this.title = this.searchMovieForm.value.movieTitle;
+    console.log("title", this.title);
     this.httpClient.get(`http://www.omdbapi.com/?t=${this.title}&apikey=79fe984`).subscribe( (res) => {
       if(res['Title'] !== undefined){
         const id = Math.floor(Math.random() * 101);
