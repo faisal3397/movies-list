@@ -6,7 +6,7 @@
         *ngIf="!searchMovieForm.get('movieTitle').valid && searchMovieForm.get('movieTitle').touched" 
         class="help-block">Please enter a valid title!</span>
     </div>
-    <button class="btn btn-primary" type="submit">Search</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!searchMovieForm.valid">Search</button>
 </form>
 <div class="row" style="margin-top: 10%">
   <div class="col-xs-12">

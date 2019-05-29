@@ -23,7 +23,6 @@ export class MoviesSearchComponent implements OnInit {
 
   onSearch() {
     this.title = this.searchMovieForm.value.movieTitle;
-    console.log("title", this.title);
     this.httpClient.get(`http://www.omdbapi.com/?t=${this.title}&apikey=79fe984`).subscribe( (res) => {
       if(res['Title'] !== undefined){
         const id = Math.floor(Math.random() * 101);
@@ -33,8 +32,8 @@ export class MoviesSearchComponent implements OnInit {
       } else {
         console.log('movie does not exist');
       }
-
     });
+    this.searchMovieForm.reset();
   }
 
   addToWatchList(movie: Movie) {
