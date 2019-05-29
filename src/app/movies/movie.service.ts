@@ -30,7 +30,18 @@ export class MovieService {
     watchList: Movie[] = [];
 
     addToWatchlist(movie: Movie){
-        this.watchList.push(movie);
+        let count = 0;
+        this.watchList.forEach(el => {
+            if (el.title === movie.title) {
+                count++;
+            }
+        });
+        if (count === 0 ) {
+            this.watchList.push(movie);
+            console.log('movie added to the watchlist');
+        } else {
+            console.log('movie is already on the watchlist');
+        }
     }
 
     removeFromWatchlist(movie: Movie){
@@ -46,5 +57,25 @@ export class MovieService {
         );
 
         return movie;
+    }
+
+    titleExist(title: string) {
+        let count = 0;
+        this.movies.forEach(el => {
+            if (el.title === title) {
+                count++;
+            }
+        });
+
+        return count;
+    }
+
+    createMovie(id: number, title: string, year: number, genre: string, plot: string, posterUrl: string) {
+        const newMovie = new Movie(id, title, year, genre, plot, posterUrl);
+        if(this.titleExist(newMovie.title) === 0){
+            this.movies.push(newMovie);
+        } else {
+            console.log('movie exists');
+        }
     }
 }

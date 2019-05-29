@@ -1,19 +1,23 @@
-<form>
+<form [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="movieTitle">Movie Title: </label>
-    <input class="form-control" type="text" placeholder="Movie Title:">
+    <input class="form-control" type="text" placeholder="Movie Title:" id="movieTitle" formControlName="movieTitle">
   </div>
   <div class="form-group">
     <label for="movieYear">Movie Year: </label>
-    <input class="form-control" type="number" placeholder="Movie Title:">
+    <input class="form-control" type="number" placeholder="Movie Year:" id="movieYear" formControlName="movieYear">
   </div>
   <div class="form-group">
     <label for="movieGenre">Movie Genre: </label>
-    <input class="form-control" type="text" placeholder="Movie Title:">
+    <input class="form-control" type="text" placeholder="Movie Genre:" id="movieGenre" formControlName="movieGenre">
   </div>
   <div class="form-group">
+      <label for="posterUrl">Poster URL: </label>
+      <input class="form-control" type="text" placeholder="Poster URL:" id="posterUrl" formControlName="posterUrl">
+    </div>
+  <div class="form-group">
     <label for="moviePlot">Movie Plot:</label>
-    <textarea class="form-control" id="moviePlot" rows="2"></textarea>
+    <textarea class="form-control" id="moviePlot" rows="2" formControlName="moviePlot"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
