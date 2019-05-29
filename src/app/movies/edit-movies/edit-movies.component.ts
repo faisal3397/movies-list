@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
 
@@ -26,11 +26,11 @@ export class EditMoviesComponent implements OnInit {
     )
 
     this.addMovieForm = new FormGroup({
-      'movieTitle': new FormControl(null),
-      'movieYear': new FormControl(null),
-      'movieGenre': new FormControl(null),
-      'posterUrl': new FormControl(null),
-      'moviePlot': new FormControl(null),
+      'movieTitle': new FormControl(null, Validators.required),
+      'movieYear': new FormControl(null, Validators.required),
+      'movieGenre': new FormControl(null, Validators.required),
+      'posterUrl': new FormControl(null, Validators.required),
+      'moviePlot': new FormControl(null, Validators.required),
     });
   }
 

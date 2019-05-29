@@ -2,22 +2,40 @@
   <div class="form-group">
     <label for="movieTitle">Movie Title: </label>
     <input class="form-control" type="text" placeholder="Movie Title:" id="movieTitle" formControlName="movieTitle">
+    <span
+    *ngIf="!addMovieForm.get('movieTitle').valid && addMovieForm.get('movieTitle').touched" 
+    class="help-block">Please enter a valid title!</span>
   </div>
   <div class="form-group">
     <label for="movieYear">Movie Year: </label>
     <input class="form-control" type="number" placeholder="Movie Year:" id="movieYear" formControlName="movieYear">
+    <span
+    *ngIf="!addMovieForm.get('movieYear').valid && addMovieForm.get('movieYear').touched" 
+    class="help-block">Please enter a valid Year!</span>
   </div>
   <div class="form-group">
     <label for="movieGenre">Movie Genre: </label>
     <input class="form-control" type="text" placeholder="Movie Genre:" id="movieGenre" formControlName="movieGenre">
+    <span
+    *ngIf="!addMovieForm.get('movieGenre').valid && addMovieForm.get('movieGenre').touched" 
+    class="help-block">Please enter a valid genre!</span>
   </div>
   <div class="form-group">
       <label for="posterUrl">Poster URL: </label>
       <input class="form-control" type="text" placeholder="Poster URL:" id="posterUrl" formControlName="posterUrl">
+      <span
+      *ngIf="!addMovieForm.get('posterUrl').valid && addMovieForm.get('posterUrl').touched" 
+      class="help-block">Please enter a valid URL!</span>
     </div>
   <div class="form-group">
     <label for="moviePlot">Movie Plot:</label>
     <textarea class="form-control" id="moviePlot" rows="2" formControlName="moviePlot"></textarea>
+    <span
+    *ngIf="!addMovieForm.get('moviePlot').valid && addMovieForm.get('moviePlot').touched" 
+    class="help-block">Please enter a valid Plot!</span>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <span
+  *ngIf="!addMovieForm.valid && addMovieForm.touched" 
+  class="help-block">Please enter a valid data!</span>
+  <button type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid && addMovieForm.touched">Submit</button>
 </form>
