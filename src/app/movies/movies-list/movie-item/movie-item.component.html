@@ -1,16 +1,16 @@
 <a
-style="cursor: pointer"
-class="list-group-item clearfix"
+class="list-group-item list-group-item-action waves-light" 
+mdbWavesEffect
 [routerLink]="['/movies',movie.id]"
 routerLinkActive="active">
 <div class="pull-left">
-   <h4 class="list-group-item-heading">{{movie.title}} ({{movie.year}})</h4>
+   <h4 class="list-group-item-heading mb-4"><strong>{{movie.title}} ({{movie.year}})</strong></h4>
    <p class="list-group-item-text">Genre: {{movie.genre}}</p>
 </div>
 <span class="pull-right">
   <img src={{movie.posterUrl}}
        alt={{movie.title}}
        class="img-responsive"
-       style="max-height: 50px">
+       style="max-height: 75px">
 </span>
 </a>

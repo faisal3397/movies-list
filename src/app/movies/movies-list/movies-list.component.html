@@ -1,20 +1,22 @@
 <div class="row">
     <div class="col-xs-9">
-      <h4>List of Movies:</h4>
+      <h1>List of Movies:</h1>
     </div>
     <div class="col-xs-3">
       <a
         role="button"
         class="btn btn-success"
-        [routerLink]="['/movies','new']">Add Movie</a>
+        [routerLink]="['/movies','new']"><h5>Add Movie</h5></a>
     </div>
 </div>
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <app-movie-item
+    <div class="list-group list-group-flush">
+      <app-movie-item
       *ngFor="let movieEl of movies"
       [movie]="movieEl"></app-movie-item>
+    </div>
   </div>
 </div>
 <hr>
