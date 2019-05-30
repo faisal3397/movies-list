@@ -1,41 +1,38 @@
 <form [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="movieTitle">Movie Title: </label>
-    <input class="form-control" type="text" placeholder="Movie Title:" id="movieTitle" formControlName="movieTitle">
-    <span
-    *ngIf="!addMovieForm.get('movieTitle').valid && addMovieForm.get('movieTitle').touched" 
-    class="help-block">Please enter a valid title!</span>
+  <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
+    <label for="movieTitle">Movie Title:</label> 
+    <input mdbInput mdbValidate class="form-control" type="text" id="movieTitle" formControlName="movieTitle">
+    <mdb-error
+     *ngIf="addMovieForm.get('movieTitle').invalid && (addMovieForm.get('movieTitle').dirty || addMovieForm.get('movieTitle').touched)"
+     >Please enter a valid title!</mdb-error>
   </div>
-  <div class="form-group">
+  <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
     <label for="movieYear">Movie Year: </label>
-    <input class="form-control" type="number" placeholder="Movie Year:" id="movieYear" formControlName="movieYear">
-    <span
-    *ngIf="!addMovieForm.get('movieYear').valid && addMovieForm.get('movieYear').touched" 
-    class="help-block">Please enter a valid Year!</span>
+    <input mdbInput mdbValidate class="form-control" type="number" id="movieYear" formControlName="movieYear">
+    <mdb-error
+     *ngIf="addMovieForm.get('movieYear').invalid && (addMovieForm.get('movieYear').dirty || addMovieForm.get('movieYear').touched)"
+     >Please enter a valid Year!</mdb-error>
   </div>
-  <div class="form-group">
+  <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
     <label for="movieGenre">Movie Genre: </label>
-    <input class="form-control" type="text" placeholder="Movie Genre:" id="movieGenre" formControlName="movieGenre">
-    <span
-    *ngIf="!addMovieForm.get('movieGenre').valid && addMovieForm.get('movieGenre').touched" 
-    class="help-block">Please enter a valid genre!</span>
+    <input mdbInput mdbValidate class="form-control" type="text" id="movieGenre" formControlName="movieGenre">
+    <mdb-error
+     *ngIf="addMovieForm.get('movieGenre').invalid && (addMovieForm.get('movieGenre').dirty || addMovieForm.get('movieGenre').touched)"
+     >Please enter a valid Genre!</mdb-error>
   </div>
-  <div class="form-group">
+  <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
       <label for="posterUrl">Poster URL: </label>
-      <input class="form-control" type="text" placeholder="Poster URL:" id="posterUrl" formControlName="posterUrl">
-      <span
-      *ngIf="!addMovieForm.get('posterUrl').valid && addMovieForm.get('posterUrl').touched" 
-      class="help-block">Please enter a valid URL!</span>
+      <input mdbInput mdbValidate class="form-control" type="text" id="posterUrl" formControlName="posterUrl">
+      <mdb-error
+      *ngIf="addMovieForm.get('posterUrl').invalid && (addMovieForm.get('posterUrl').dirty || addMovieForm.get('posterUrl').touched)"
+      >Please enter a valid URL!</mdb-error>
     </div>
-  <div class="form-group">
+  <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
     <label for="moviePlot">Movie Plot:</label>
-    <textarea class="form-control" id="moviePlot" rows="2" formControlName="moviePlot"></textarea>
-    <span
-    *ngIf="!addMovieForm.get('moviePlot').valid && addMovieForm.get('moviePlot').touched" 
-    class="help-block">Please enter a valid Plot!</span>
+    <textarea mdbInput mdbValidate length="120" mdbCharCounter class="md-textarea form-control" id="moviePlot" rows="2" formControlName="moviePlot"></textarea>
+    <mdb-error
+     *ngIf="addMovieForm.get('moviePlot').invalid && (addMovieForm.get('moviePlot').dirty || addMovieForm.get('moviePlot').touched)"
+     >Please enter a valid Plot!</mdb-error>
   </div>
-  <span
-  *ngIf="!addMovieForm.valid && addMovieForm.touched" 
-  class="help-block">Please enter a valid data!</span>
-  <button type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid">Submit</button>
+  <button style="margin-top: 1.5%" type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid">Submit</button>
 </form>

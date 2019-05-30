@@ -1,32 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-        <img src={{movie.posterUrl}}
-             alt="{{movie.title}}"
-             class="img-responsive"
-             style="max-height: 300px">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <h4>{{movie.title}} ({{movie.year}})</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <p>Genre: {{movie.genre}}</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6">
-      <p>Plot: {{movie.plot}}</p>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-xs-3">
-        <button class="btn btn-success" (click)="addToWatchList(movie)">
-          Add to Watch List
-        </button>
+<div class="row">
+  <div class="col-md-4">
+    <!--Card-->
+    <mdb-card cascade="true" wider="true">
+
+      <!--Card image-->
+      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+        <mdb-card-img
+          src={{movie.posterUrl}}
+          alt="{{movie.title}}"></mdb-card-img>
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
       </div>
-    </div>
+      <!--/Card image-->
+
+      <mdb-card-body cascade="true" class="text-center">
+        <!--Card content-->
+        <!--Title-->
+        <h4 class="card-title">
+          <strong>{{movie.title}} ({{movie.year}})</strong>
+        </h4>
+        <h5 class="indigo-text">
+            <p>Genre: {{movie.genre}}</p>
+        </h5>
+
+        <mdb-card-text>
+            Plot: {{movie.plot}}
+        </mdb-card-text>
+
+        <button class="btn btn-success waves-light" (click)="addToWatchList(movie)" mdbWavesEffect>
+          <h6>Add to Watch List</h6>
+        </button>
+      </mdb-card-body>
+      <!--/.Card content-->
+
+    </mdb-card>
+    <!--/.Card-->
+  </div>
 </div>
