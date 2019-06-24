@@ -1,0 +1,26 @@
+{
+    "demo": {
+        "title": "MoviesDB",
+        "movies": "Movies",
+        "watchlist": "Watch List",
+        "search": "Search for a Movie",
+        "movieTitle": "Movie Title:",
+        "validTitle": "Please enter a valid title!",
+        "movieYear": "Movie Year: ",
+        "validYear": "Please enter a valid Year!",
+        "movieGenre": "Movie Genre: ",
+        "validGenre": "Please enter a valid Genre!",
+        "posterUrl": "Poster URL: ",
+        "validURL": "Please enter a valid URL!",
+        "moviePlot": "Movie Plot: ",
+        "validPlot": "Please enter a valid Plot!",
+        "submit": "Submit",
+        "genre": "Genre: ",
+        "plot": "Plot: ",
+        "addToWatchList": "Add to Watch List",
+        "listofmovies": "List Of Movies: ",
+        "addmovie": "Add Movie",
+        "pleaseSelectMovie": "Please Select a Movie",
+        "removeFromWatchlist": "Remove from Watch List" 
+    }
+}

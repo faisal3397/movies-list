@@ -16,7 +16,11 @@ import { MovieService } from './movies/movie.service';
 import { MoviesStartComponent } from './movies/movies-start/movies-start.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { MoviesSearchComponent } from './movies/movies-search/movies-search.component';
-import { HttpClientModule } from '@angular/common/http';
+
+// import ngx-translate and the http loader
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,9 +42,22 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    })
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

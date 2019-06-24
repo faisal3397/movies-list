@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Movie } from './movies/movie.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,12 @@ import { Movie } from './movies/movie.model';
 export class AppComponent {
   title = 'movies-list';
   navigateTo = 'movies';
-  // onNavigate(page: string){
-  //   this.navigateTo = page;
-  // }
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+  
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
 
 }

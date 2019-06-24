@@ -1,0 +1,26 @@
+{
+    "demo": {
+        "title": "قاعدة بيانات الأفلام",
+        "movies": "الأفلام",
+        "watchlist": "قائمة المشاهدة",
+        "search": "إبحث عن فلم",
+        "movieTitle": "عنوان الفلم:",
+        "validTitle": "من فضلك أدخل عنوان صحيح",
+        "movieYear": "سنة الإنتاج: ",
+        "validYear": "من فضلك أدخل سنة إنتاج صحيحة",
+        "movieGenre": "نوع الفلم: ",
+        "validGenre": "من فضلك أدخل عنوان صحيح",
+        "posterUrl": "رابط لصورة الفلم",
+        "validURL": "من فضلك أدخل رابط صحيح!",
+        "moviePlot": "قصة الفلم:",
+        "validPlot": "من فضلك أدخل قصة صحيحة!",
+        "submit": "تثبيت",
+        "genre": "النوع: ",
+        "plot": "القصة: ",
+        "addToWatchList": "أضف لقائمة المشاهدة",
+        "listofmovies": "قائمة الأفلام",
+        "addmovie": "أضف فلم",
+        "pleaseSelectMovie": "من فضلك إختر فلم",
+        "removeFromWatchlist": "إحذف من قائمة المشاهدة"    
+    }
+}
