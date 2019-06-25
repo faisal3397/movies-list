@@ -44,7 +44,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     // ngx-translate and the loader module
-    HttpClientModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

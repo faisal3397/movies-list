@@ -1,5 +1,9 @@
 import { Movie } from './movie.model';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class MovieService {
     movie1 = new Movie(1,
                         "The Lord of the Rings: The return of the King",
@@ -28,6 +32,18 @@ export class MovieService {
     movies: Movie[] = [this.movie1, this.movie2, this.movie3, this.movie4];
     movie: Movie;
     watchList: Movie[] = [];
+
+    constructor(private httpClient: HttpClient) {}
+
+    fetchMovies() {
+        console.log('I am In');
+        
+        return this.httpClient.get('https://movies-list-56684.firebaseio.com/movies.json').subscribe(responseData => {
+            console.log(responseData);
+            
+        })
+        
+    }
 
     addToWatchlist(movie: Movie){
         let count = 0;
@@ -74,6 +90,10 @@ export class MovieService {
         const newMovie = new Movie(id, title, year, genre, plot, posterUrl);
         if(this.titleExist(newMovie.title) === 0){
             this.movies.push(newMovie);
+            this.httpClient.post('https://movies-list-56684.firebaseio.com/movies.json', newMovie)
+            .subscribe(responseData => {
+                console.log(responseData);
+            });
         } else {
             console.log('movie exists');
         }
