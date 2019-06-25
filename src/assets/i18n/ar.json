@@ -21,6 +21,6 @@
         "listofmovies": "قائمة الأفلام",
         "addmovie": "أضف فلم",
         "pleaseSelectMovie": "من فضلك إختر فلم",
-        "removeFromWatchlist": "إحذف من قائمة المشاهدة"    
+        "remove": "إحذف من قائمة المشاهدة"    
     }
 }

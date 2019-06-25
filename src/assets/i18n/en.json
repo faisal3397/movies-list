@@ -21,6 +21,6 @@
         "listofmovies": "List Of Movies: ",
         "addmovie": "Add Movie",
         "pleaseSelectMovie": "Please Select a Movie",
-        "removeFromWatchlist": "Remove from Watch List" 
+        "remove": "Remove from Watch List" 
     }
 }
