@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <h4>Watch List:</h4>
+        <h4>{{'demo.watchlist' | translate}}:</h4>
     </div>
 </div>
 <hr>
@@ -8,8 +8,6 @@
   <div class="col-xs-12">
     <div class="list-group list-group-flush">
       <a
-      [routerLink]="['/movies',movie.id]"
-      routerLinkActive="active"
       class="list-group-item list-group-item-action waves-light"
       *ngFor="let movie of watchlistMovies">
 
@@ -17,11 +15,11 @@
           <h4>{{movie.title}} ({{movie.year}})</h4>
         </div>
         <span class="pull-right">
-            <button class="btn btn-danger" (click)="remove(movie)">
-              Remove from Watch List
+            <button class="btn btn-danger" (click)="remove(movie)" type="button">
+              {{'demo.remove' | translate}}
             </button>
         </span>
-      </a>      
+      </a>    
     </div>
   </div>
 </div>

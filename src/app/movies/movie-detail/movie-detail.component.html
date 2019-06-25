@@ -21,15 +21,15 @@
           <strong>{{movie.title}} ({{movie.year}})</strong>
         </h4>
         <h5 class="indigo-text">
-            <p>Genre: {{movie.genre}}</p>
+            <p>{{'demo.genre' | translate}} {{movie.genre}}</p>
         </h5>
 
         <mdb-card-text>
-            Plot: {{movie.plot}}
+            {{'demo.plot' | translate}} {{movie.plot}}
         </mdb-card-text>
 
         <button class="btn btn-success waves-light" (click)="addToWatchList(movie)" mdbWavesEffect>
-          <h6>Add to Watch List</h6>
+          <h6>{{'demo.addToWatchList' | translate}}</h6>
         </button>
       </mdb-card-body>
       <!--/.Card content-->
