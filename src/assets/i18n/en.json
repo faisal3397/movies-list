@@ -1,4 +1,5 @@
 {
+    "dir": "ltr",
     "demo": {
         "title": "MoviesDB",
         "movies": "Movies",
