@@ -22,6 +22,13 @@
         "listofmovies": "List Of Movies: ",
         "addmovie": "Add Movie",
         "pleaseSelectMovie": "Please Select a Movie",
-        "remove": "Remove from Watch List" 
+        "remove": "Remove from Watch List",
+        "email": "Email",
+        "password": "Password",
+        "validEmail": "Please enter a valid Email!",
+        "validPassword": "Please enter a valid Password!",
+        "login": "Login",
+        "signUp": "Sign Up",
+        "switchTo": "Switch to"    
     }
 }

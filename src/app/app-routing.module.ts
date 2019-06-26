@@ -7,6 +7,7 @@ import { MoviesStartComponent } from './movies/movies-start/movies-start.compone
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { MoviesSearchComponent } from './movies/movies-search/movies-search.component';
 import { MoviesResolverService } from './movies/movies-resolver.service';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/movies', pathMatch: 'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path: ':id', component: MovieDetailComponent, resolve: [MoviesResolverService]},
     {path: ':id/edit', component: EditMoviesComponent, resolve: [MoviesResolverService]}
   ]},
-  {path: 'watchlist', component: WatchListComponent}
+  {path: 'watchlist', component: WatchListComponent},
+  {path:'auth', component: AuthComponent}
 ];
 
 @NgModule({

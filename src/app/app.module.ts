@@ -22,6 +22,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { MoviesResolverService } from './movies/movies-resolver.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MoviesResolverService } from './movies/movies-resolver.service';
     DropdownDirective,
     MoviesStartComponent,
     EditMoviesComponent,
-    MoviesSearchComponent
+    MoviesSearchComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

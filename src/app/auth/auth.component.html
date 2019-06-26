@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 ">
+    <h1>{{ (isLoginMode ? 'demo.login' : 'demo.signUp') | translate }}</h1>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
+        <label for="email">{{'demo.email' | translate}}</label>
+        <input
+         type="email"
+         id="email"
+         class="form-control"
+         mdbInput
+         mdbValidate
+         formControlName="email"
+         email>
+         <mdb-error
+         *ngIf="authForm.get('email').invalid && (authForm.get('email').dirty || authForm.get('email').touched)"
+         >{{ 'demo.validEmail' | translate }}</mdb-error>
+      </div>
+      <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
+          <label for="password">{{'demo.password' | translate}}</label>
+          <input
+           type="password"
+           id="password"
+           class="form-control"
+           mdbInput
+           mdbValidate
+           formControlName="password"
+           minlength="6">
+           <mdb-error
+           *ngIf="authForm.get('password').invalid && (authForm.get('password').dirty || authForm.get('password').touched)"
+           >{{ 'demo.validPassword' | translate }}</mdb-error>
+      </div>
+      <div>
+        <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
+          {{ (isLoginMode ? 'demo.login' : 'demo.signUp') | translate }}
+        </button>
+
+        <button class="btn btn-primary" type="button" (click)="onSwitchMode()">
+            {{'demo.switchTo' | translate}} {{ (isLoginMode ? 'demo.signUp' : 'demo.login') | translate }}
+          </button>
+      </div>
+      
+    </form>
+  </div>
+</div>
