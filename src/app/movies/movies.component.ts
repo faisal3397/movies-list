@@ -9,7 +9,7 @@ export class MoviesComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
-    
+    this.movieService.fetchMovies()
   }
 
 

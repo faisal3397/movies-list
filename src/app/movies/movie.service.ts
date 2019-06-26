@@ -12,27 +12,29 @@ export class MovieService {
 
     constructor(private httpClient: HttpClient) {}
 
+    setMovies(movies: Movie[]) {
+        this.movies = movies;
+    }
+
+    setWatchlist(watchlistMovies: Movie[]) {
+        this.watchList = watchlistMovies
+    }
+
     fetchMovies() {
-        console.log('I am In');
-       
-        
-        return this.httpClient.get('https://movies-list-56684.firebaseio.com/movies.json').subscribe(responseData => {
-            console.log('Fetch', responseData)
-            for(var key in responseData){
-                if(responseData.hasOwnProperty(key)) {
-                    this.movies.push(responseData[key])
-                }
+        console.log('I am In');        
+        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/movies.json').subscribe(responseData => {
+            console.log('Fetch Movies', responseData)
+            if(responseData != null) {
+                 this.setMovies(responseData);
             }
         });
     }
 
     fetchWatchlist() {
-        return this.httpClient.get('https://movies-list-56684.firebaseio.com/watchlist.json').subscribe(responseData => {
-            console.log('Fetch', responseData)
-            for(var key in responseData){
-                if(responseData.hasOwnProperty(key)) {
-                    this.watchList.push(responseData[key])
-                }
+        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/watchlist.json').subscribe(responseData => {
+            console.log('Fetch Watchlist', responseData)
+            if(responseData != null) {
+                 this.setWatchlist(responseData);
             }
         });
     }
@@ -86,11 +88,14 @@ export class MovieService {
 
     titleExist(title: string) {
         let count = 0;
-        this.movies.forEach(el => {
-            if (el.title === title) {
-                count++;
-            }
-        });
+        if(this.movies != null){
+            this.movies.forEach(el => {
+                if (el.title === title) {
+                    count++;
+                }
+            });            
+        }
+
 
         return count;
     }
