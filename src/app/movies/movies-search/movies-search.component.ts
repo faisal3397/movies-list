@@ -24,7 +24,7 @@ export class MoviesSearchComponent implements OnInit {
   onSearch() {
     this.title = this.searchMovieForm.value.movieTitle;
     this.httpClient.get(`http://www.omdbapi.com/?t=${this.title}&apikey=79fe984`).subscribe( (res) => {
-      if(res['Title'] !== undefined){
+      if(res['Title'] !== undefined || this.movieService.titleExist(res['Title'])){
         const id = Math.floor(Math.random() * 101);
         this.resultMovie = new Movie(id,res['Title'],res['Year'],res['Genre'],res['Plot'],res['Poster']);
         this.movieService.createMovie(id,res['Title'],res['Year'],res['Genre'],res['Plot'],res['Poster'])
