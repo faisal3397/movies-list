@@ -1,4 +1,4 @@
-import { Component, Renderer2, OnInit } from '@angular/core';
+import { Component, Renderer2, OnInit, OnChanges } from '@angular/core';
 import { Movie } from './movies/movie.model';
 import {TranslateService} from '@ngx-translate/core';
 import { MovieService } from './movies/movie.service';
@@ -8,7 +8,7 @@ import { MovieService } from './movies/movie.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   title = 'movies-list';
   navigateTo = 'movies';
   constructor(private translate: TranslateService, private renderer: Renderer2, private movieService: MovieService) {
@@ -16,6 +16,11 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(){
+    this.movieService.fetchMovies();
+    this.movieService.fetchWatchlist();
+  }
+
+  ngOnChanges() {
     this.movieService.fetchMovies();
     this.movieService.fetchWatchlist();
   }
