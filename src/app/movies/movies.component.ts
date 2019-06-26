@@ -12,8 +12,5 @@ export class MoviesComponent implements OnInit {
     
   }
 
-  onFetch() {
-    this.movieService.fetchMovies()
-  }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MovieService } from '../movies/movie.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() pageSelected = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   onSelect(page: string){
     this.pageSelected.emit(page)
   }
+
 
 
 }
