@@ -16,13 +16,13 @@ export class AppComponent implements OnInit, OnChanges {
   }
   
   ngOnInit(){
-    this.movieService.fetchMovies();
-    this.movieService.fetchWatchlist();
+    this.movieService.fetchMovies().subscribe();
+    this.movieService.fetchWatchlist().subscribe();
   }
 
   ngOnChanges() {
-    this.movieService.fetchMovies();
-    this.movieService.fetchWatchlist();
+    this.movieService.fetchMovies().subscribe();
+    this.movieService.fetchWatchlist().subscribe();
   }
   
   useLanguage(language: string) {

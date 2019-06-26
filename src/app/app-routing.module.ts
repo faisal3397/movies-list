@@ -6,6 +6,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
 import { MoviesStartComponent } from './movies/movies-start/movies-start.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { MoviesSearchComponent } from './movies/movies-search/movies-search.component';
+import { MoviesResolverService } from './movies/movies-resolver.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/movies', pathMatch: 'full'},
@@ -13,8 +14,8 @@ const routes: Routes = [
     {path: '', component: MoviesStartComponent},
     {path: 'search', component: MoviesSearchComponent},
     {path: 'new', component: EditMoviesComponent},
-    {path: ':id', component: MovieDetailComponent},
-    {path: ':id/edit', component: EditMoviesComponent}
+    {path: ':id', component: MovieDetailComponent, resolve: [MoviesResolverService]},
+    {path: ':id/edit', component: EditMoviesComponent, resolve: [MoviesResolverService]}
   ]},
   {path: 'watchlist', component: WatchListComponent}
 ];

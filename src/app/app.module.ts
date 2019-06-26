@@ -21,6 +21,7 @@ import { MoviesSearchComponent } from './movies/movies-search/movies-search.comp
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { MoviesResolverService } from './movies/movies-resolver.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
         }
     })
   ],
-  providers: [MovieService],
+  providers: [MovieService, MoviesResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

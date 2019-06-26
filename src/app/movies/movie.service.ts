@@ -1,6 +1,6 @@
 import { Movie } from './movie.model';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -21,27 +21,25 @@ export class MovieService {
     }
 
     fetchMovies() {
-        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/movies.json').subscribe(responseData => {
+
+        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/movies.json').pipe(tap( responseData => {
             if (responseData != null) {
-                 this.setMovies(responseData);
-                 console.log('here are the movies: ', this.movies);
+                this.setMovies(responseData);
             }
-        });
+        }));
     }
 
     fetchWatchlist() {
-        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/watchlist.json').subscribe(responseData => {
+        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/watchlist.json').pipe(tap( responseData => {
             if (responseData != null) {
-                 this.setWatchlist(responseData);
+                this.setWatchlist(responseData);
             }
-        });
+        }));
     }
 
     storeMovies() {
         const storedMovies = this.getMovies();
-        this.httpClient.put('https://movies-list-56684.firebaseio.com/movies.json', storedMovies).subscribe(response => {
-            console.log('store', response);
-        });
+        this.httpClient.put('https://movies-list-56684.firebaseio.com/movies.json', storedMovies).subscribe();
     }
 
     addToWatchlist(movie: Movie) {
@@ -53,9 +51,7 @@ export class MovieService {
         });
         if (count === 0 ) {
             this.watchList.push(movie);
-            this.httpClient.put('https://movies-list-56684.firebaseio.com/watchlist.json', this.watchList).subscribe(response => {
-                console.log('store watchlist', response);
-            });
+            this.httpClient.put('https://movies-list-56684.firebaseio.com/watchlist.json', this.watchList).subscribe();
             console.log('movie added to the watchlist',movie);
         } else {
             console.log('movie is already on the watchlist', movie);
@@ -65,9 +61,7 @@ export class MovieService {
     removeFromWatchlist(movie: Movie) {
         const index = this.watchList.indexOf(movie);
         this.watchList.splice(index, 1);
-        this.httpClient.put('https://movies-list-56684.firebaseio.com/watchlist.json', this.watchList).subscribe(response => {
-            console.log('store watchlist', response);
-        });
+        this.httpClient.put('https://movies-list-56684.firebaseio.com/watchlist.json', this.watchList).subscribe();
     }
 
     getMovie(id: number) {
