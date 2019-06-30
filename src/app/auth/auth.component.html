@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 ">
     <h1>{{ (isLoginMode ? 'demo.login' : 'demo.signUp') | translate }}</h1>
-    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="isLoading" style="text-align: center">
+        <app-loading-spinner></app-loading-spinner>        
+    </div>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
       <div class="md-form form-group mt-5" style="margin-bottom: 6% !important">
         <label for="email">{{'demo.email' | translate}}</label>
         <input
@@ -39,7 +42,11 @@
             {{'demo.switchTo' | translate}} {{ (isLoginMode ? 'demo.signUp' : 'demo.login') | translate }}
           </button>
       </div>
-      
     </form>
+
+    <div class="alert alert-danger" role="alert" *ngIf="error" style="margin: 2%">
+        <h3>{{ error }}</h3>
+    </div>
+
   </div>
 </div>

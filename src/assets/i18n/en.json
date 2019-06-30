@@ -29,6 +29,7 @@
         "validPassword": "Please enter a valid Password!",
         "login": "Login",
         "signUp": "Sign Up",
-        "switchTo": "Switch to"    
+        "switchTo": "Switch to",
+        "emailExists": "This Email already exists!"    
     }
 }

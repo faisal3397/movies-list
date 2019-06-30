@@ -16,13 +16,16 @@ import { MovieService } from './movies/movie.service';
 import { MoviesStartComponent } from './movies/movies-start/movies-start.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { MoviesSearchComponent } from './movies/movies-search/movies-search.component';
+import { AuthComponent } from './auth/auth.component';
 
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { MoviesResolverService } from './movies/movies-resolver.service';
-import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+// end of ngx-translate and the http loader imports
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { AuthComponent } from './auth/auth.component';
     MoviesStartComponent,
     EditMoviesComponent,
     MoviesSearchComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
