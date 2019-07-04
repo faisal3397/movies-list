@@ -1,7 +1,8 @@
 import { Movie } from './movie.model';
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class MovieService {
@@ -10,7 +11,7 @@ export class MovieService {
     movie: Movie;
     watchList: Movie[] = [];
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient, private authService: AuthService) {}
 
     setMovies(movies: Movie[]) {
         this.movies = movies;
@@ -21,25 +22,42 @@ export class MovieService {
     }
 
     fetchMovies() {
-
-        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/movies.json').pipe(tap( responseData => {
-            if (responseData != null) {
-                this.setMovies(responseData);
-            }
-        }));
+        return this.authService.user.pipe(
+            take(1),
+            exhaustMap(user => {
+                return this.httpClient.
+                get<Movie[]>(`https://movies-list-56684.firebaseio.com/movies.json?auth=${user.token}`)
+            }),tap( responseData => {
+                    if (responseData != null) {
+                        this.setMovies(responseData);
+                    }
+                })
+        );
     }
 
     fetchWatchlist() {
-        return this.httpClient.get<Movie[]>('https://movies-list-56684.firebaseio.com/watchlist.json').pipe(tap( responseData => {
-            if (responseData != null) {
-                this.setWatchlist(responseData);
-            }
-        }));
+        return this.authService.user.pipe(
+            take(1),
+            exhaustMap(user => {
+                return this.httpClient.
+                get<Movie[]>(`https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`)
+            }),tap( responseData => {
+                    if (responseData != null) {
+                        this.setWatchlist(responseData);
+                    }
+                })
+        );
     }
 
     storeMovies() {
         const storedMovies = this.getMovies();
-        this.httpClient.put('https://movies-list-56684.firebaseio.com/movies.json', storedMovies).subscribe();
+
+        return this.authService.user.pipe(
+            exhaustMap(user => {
+                return this.httpClient.put(
+                `https://movies-list-56684.firebaseio.com/movies.json?auth=${user.token}`, storedMovies)
+            })
+        )
     }
 
     addToWatchlist(movie: Movie) {
@@ -51,8 +69,12 @@ export class MovieService {
         });
         if (count === 0 ) {
             this.watchList.push(movie);
-            this.httpClient.put('https://movies-list-56684.firebaseio.com/watchlist.json', this.watchList).subscribe();
-            console.log('movie added to the watchlist',movie);
+            return this.authService.user.pipe(
+                exhaustMap(user => {
+                    return this.httpClient.put(
+                    `https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`, this.watchList)
+                })
+            );
         } else {
             console.log('movie is already on the watchlist', movie);
         }
@@ -61,7 +83,12 @@ export class MovieService {
     removeFromWatchlist(movie: Movie) {
         const index = this.watchList.indexOf(movie);
         this.watchList.splice(index, 1);
-        this.httpClient.put('https://movies-list-56684.firebaseio.com/watchlist.json', this.watchList).subscribe();
+        return this.authService.user.pipe(
+            exhaustMap(user => {
+                return this.httpClient.put(
+                `https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`, this.watchList)
+            })
+        );
     }
 
     getMovie(id: number) {
@@ -96,7 +123,7 @@ export class MovieService {
         const newMovie = new Movie(id, title, year, genre, plot, posterUrl);
         if (this.titleExist(newMovie.title) === 0) {
             this.movies.push(newMovie);
-            this.storeMovies();
+            this.storeMovies().subscribe();
         } else {
             console.log('movie exists');
         }

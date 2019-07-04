@@ -15,17 +15,23 @@
 
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item" routerLinkActive="active">
+          <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
+            <a class="nav-link waves-light" routerLink="/auth" mdbWavesEffect ><h3 style="color: black"><i class="fas fa-sign-out-alt"></i> {{'demo.login' | translate}} </h3></a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
               <a class="nav-link waves-light" routerLink="/movies" mdbWavesEffect><h3 style="color: black">{{'demo.movies' | translate}}</h3><span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item" routerLinkActive="active">
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
               <a class="nav-link waves-light"  routerLink="/watchlist" mdbWavesEffect><h3 style="color: black">{{'demo.watchlist' | translate}}</h3></a>
           </li>
       </ul>
       <!-- Links on the right-->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/movies','search']"><h3 style="color: black"><mdb-icon fas icon="search"></mdb-icon> {{'demo.search' | translate}} </h3></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+          <a class="nav-link waves-light" mdbWavesEffect (click)="onLogout()"><h3 style="color: black"><i class="fas fa-sign-out-alt"></i> {{'demo.logout' | translate}} </h3></a>
         </li>
       </ul>
 

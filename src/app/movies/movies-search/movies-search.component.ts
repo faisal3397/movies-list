@@ -28,7 +28,6 @@ export class MoviesSearchComponent implements OnInit {
         const id = Math.floor(Math.random() * 10001);
         this.resultMovie = new Movie(id,res['Title'],res['Year'],res['Genre'],res['Plot'],res['Poster']);
         this.movieService.createMovie(id,res['Title'],res['Year'],res['Genre'],res['Plot'],res['Poster'])
-        console.log('result: ', this.resultMovie);
       } else {
         console.log('movie does not exist');
       }

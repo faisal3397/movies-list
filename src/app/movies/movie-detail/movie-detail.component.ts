@@ -23,6 +23,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   addToWatchList(movie: Movie) {
-    this.movieService.addToWatchlist(movie);
+    this.movieService.addToWatchlist(movie).subscribe();
   }
 }

@@ -18,6 +18,6 @@ export class WatchListComponent implements OnInit {
   }
 
   remove(movie: Movie){
-    this.movieService.removeFromWatchlist(movie);
+    this.movieService.removeFromWatchlist(movie).subscribe();
   }
 }

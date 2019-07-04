@@ -51,12 +51,12 @@ export class AuthComponent implements OnInit {
     authObs.subscribe(resData => {
       console.log(resData);
       this.isLoading = false;
-      if (this.isLoginMode === true) {
-        this.router.navigate(['/movies']);
-      }
+      this.router.navigate(['/movies']);
     }, errorRes => {
-      console.log(errorRes);
-      this.error = errorRes;
+       this.translate.get(errorRes).subscribe((errorResponse) => { //translate the error then assign it to this.error
+          this.error = errorResponse;
+          }
+        );
       this.isLoading = false;
     });
 
