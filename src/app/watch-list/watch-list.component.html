@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <h4>{{'demo.watchlist' | translate}}:</h4>
+        <h4 [ngClass]="{'float-right': lang === 'ar'}">{{'demo.watchlist' | translate}}:</h4>
     </div>
 </div>
 <hr>
@@ -11,10 +11,10 @@
       class="list-group-item list-group-item-action waves-light"
       *ngFor="let movie of watchlistMovies">
 
-        <div class="pull-left">
+        <div class="pull-left" [ngClass]="{'float-right': lang === 'ar'}">
           <h4>{{movie.title}} ({{movie.year}})</h4>
         </div>
-        <span class="pull-right">
+        <span class="pull-right" [ngClass]="{'float-left': lang === 'ar'}">
             <button class="btn btn-danger" (click)="remove(movie)" type="button">
               {{'demo.remove' | translate}}
             </button>
@@ -24,3 +24,4 @@
   </div>
 </div>
 <hr>
+<app-lang-btns></app-lang-btns>

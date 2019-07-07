@@ -24,6 +24,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { MoviesResolverService } from './movies/movies-resolver.service';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { LangBtnsComponent } from './lang-btns/lang-btns.component';
 // end of ngx-translate and the http loader imports
 
 
@@ -41,7 +42,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     EditMoviesComponent,
     MoviesSearchComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    LangBtnsComponent
   ],
   imports: [
     BrowserModule,

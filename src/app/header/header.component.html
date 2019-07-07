@@ -14,7 +14,7 @@
   <links>
 
       <!-- Links -->
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto" [ngClass]="{'ml-auto' : lang === 'ar', 'mr-auto': lang === 'eng'}">
           <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
             <a class="nav-link waves-light" routerLink="/auth" mdbWavesEffect ><h3 style="color: black"><i class="fas fa-sign-out-alt"></i> {{'demo.login' | translate}} </h3></a>
           </li>
@@ -26,7 +26,7 @@
           </li>
       </ul>
       <!-- Links on the right-->
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" [ngClass]="{'mr-auto' : lang === 'ar'}">
         <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/movies','search']"><h3 style="color: black"><mdb-icon fas icon="search"></mdb-icon> {{'demo.search' | translate}} </h3></a>
         </li>
@@ -37,6 +37,5 @@
 
   </links>
   <!-- Collapsible content -->
-
 </mdb-navbar>
 <!--/.Navbar-->

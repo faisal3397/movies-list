@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LocalizationService } from 'src/app/shared/localization.service';
 
 @Component({
   selector: 'app-movies-search',
@@ -13,11 +14,17 @@ export class MoviesSearchComponent implements OnInit {
   title = '';
   resultMovie: Movie;
   searchMovieForm: FormGroup;
-  constructor(private httpClient: HttpClient, private movieService: MovieService) { }
+  lang;
+  constructor(private httpClient: HttpClient, private movieService: MovieService, private localizationService: LocalizationService) { }
 
   ngOnInit() { 
     this.searchMovieForm = new FormGroup({
       'movieTitle': new FormControl(null, Validators.required)
+    });
+
+    this.localizationService.langSelected.subscribe( value => {
+      console.log('Subscription Value: ', value);
+      this.lang = value;
     });
   }
 

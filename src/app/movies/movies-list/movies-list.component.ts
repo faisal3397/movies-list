@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Movie } from "../movie.model";
 import { MovieService } from '../movie.service';
+import { LocalizationService } from 'src/app/shared/localization.service';
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
@@ -9,10 +10,15 @@ import { MovieService } from '../movie.service';
 export class MoviesListComponent implements OnInit {
 
   movies: Movie[] = [];
-  constructor(private movieService: MovieService) { }
+  lang
+  constructor(private movieService: MovieService, private localizationService: LocalizationService) { }
 
   ngOnInit() {
     this.movies = this.movieService.movies;
+    this.localizationService.langSelected.subscribe( value => {
+      console.log('Subscription Value: ', value);
+      this.lang = value;
+    });
   }
 
 

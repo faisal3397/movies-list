@@ -1,12 +1,12 @@
 <form [formGroup]="searchMovieForm" (ngSubmit)="onSearch()">
-    <div class="md-form form-group mt-5" style="margin-bottom: 4% !important">
+    <div class="md-form form-group mt-5" style="margin-bottom: 4% !important;">
         <label for="movieTitle">{{'demo.search' | translate}} </label>
         <input mdbInput mdbValidate class="form-control" type="text" id="movieTitle" formControlName="movieTitle">
         <mdb-error *ngIf="searchMovieForm.get('movieTitle').invalid && (searchMovieForm.get('movieTitle').dirty || searchMovieForm.get('movieTitle').touched)">{{'demo.validTitle' | translate}}</mdb-error>
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="!searchMovieForm.valid">{{'demo.search' | translate}}</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!searchMovieForm.valid" [ngClass]="{'float-right': lang==='ar'}">{{'demo.search' | translate}}</button>
 </form>
-<div class="row" style="margin-top: 3%">
+<div class="row" style="margin-top: 5%" [ngClass]="{'float-right': lang==='ar'}">
   <div class="col-xs-12">
       <div *ngIf="resultMovie != null">
           <div class="container">
