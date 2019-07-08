@@ -25,6 +25,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { MoviesResolverService } from './movies/movies-resolver.service';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { LangBtnsComponent } from './lang-btns/lang-btns.component';
+import { AlertComponent } from './shared/alert/alert/alert.component';
+import { PlaceHolderDirective } from './shared/placeholder/placeholder.directive';
 // end of ngx-translate and the http loader imports
 
 
@@ -43,7 +45,9 @@ import { LangBtnsComponent } from './lang-btns/lang-btns.component';
     MoviesSearchComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    LangBtnsComponent
+    LangBtnsComponent,
+    AlertComponent,
+    PlaceHolderDirective
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,10 @@ import { LangBtnsComponent } from './lang-btns/lang-btns.component';
     })
   ],
   providers: [MovieService, MoviesResolverService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AlertComponent
+  ]
 })
 export class AppModule { }
 // required for AOT compilation
