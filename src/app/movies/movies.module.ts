@@ -9,11 +9,10 @@ import { MoviesSearchComponent } from './movies-search/movies-search.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LangBtnsComponent } from '../lang-btns/lang-btns.component';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpLoaderFactory } from '../app.module';
-import { HttpClient } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MoviesRoutingModule } from './movies-routing.module';
 
 @NgModule({
     declarations: [
@@ -28,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ],
     imports: [
         RouterModule, 
+        MoviesRoutingModule,
         CommonModule,
         TranslateModule,
         MDBBootstrapModule,
