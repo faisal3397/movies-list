@@ -6,10 +6,6 @@ import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/movies', pathMatch: 'full'},
-  {
-    path: 'watchlist',
-    component: WatchListComponent,
-    canActivate: [AuthGuard]},
   {path: 'auth', component: AuthComponent},
   {path: '**', redirectTo: 'auth'}
 ];

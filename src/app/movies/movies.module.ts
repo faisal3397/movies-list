@@ -8,11 +8,11 @@ import { EditMoviesComponent } from './edit-movies/edit-movies.component';
 import { MoviesSearchComponent } from './movies-search/movies-search.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LangBtnsComponent } from '../lang-btns/lang-btns.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MoviesRoutingModule } from './movies-routing.module';
+import { LangBtnsModule } from '../lang-btns/lang-btns.module';
 
 @NgModule({
     declarations: [
@@ -23,26 +23,18 @@ import { MoviesRoutingModule } from './movies-routing.module';
         MoviesStartComponent,
         EditMoviesComponent,
         MoviesSearchComponent,
-        LangBtnsComponent
     ],
     imports: [
-        RouterModule, 
+        RouterModule,
         MoviesRoutingModule,
+        LangBtnsModule,
         CommonModule,
         TranslateModule,
         MDBBootstrapModule,
         FormsModule,
         ReactiveFormsModule,
     ],
-    exports: [ // so that we can use the components in any module that imports MoviesModule
-        MoviesComponent,
-        MoviesListComponent,
-        MovieDetailComponent,
-        MovieItemComponent,
-        MoviesStartComponent,
-        EditMoviesComponent,
-        MoviesSearchComponent,
-        LangBtnsComponent
+    exports: [ // the other components are defined in movies-routing.module.ts so we don't need to export them here
     ],
     providers: []
 })

@@ -5,7 +5,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WatchListComponent } from './watch-list/watch-list.component';
+import { WatchListModule } from './watch-list/watch-list.module';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { MovieService } from './movies/movie.service';
@@ -21,13 +21,13 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { AlertComponent } from './shared/alert/alert/alert.component';
 import { PlaceHolderDirective } from './shared/placeholder/placeholder.directive';
 import { MoviesModule } from './movies/movies.module';
+import { LangBtnsModule } from './lang-btns/lang-btns.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WatchListComponent,
     HeaderComponent,
     DropdownDirective,
     AuthComponent,
@@ -37,6 +37,8 @@ import { MoviesModule } from './movies/movies.module';
   ],
   imports: [
     MoviesModule,
+    WatchListModule,
+    LangBtnsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
