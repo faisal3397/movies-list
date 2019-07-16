@@ -8,6 +8,6 @@ export class MoviesResolverService implements Resolve<Movie[]>{
     constructor(private movieService: MovieService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this.movieService.fetchMovies()
+        return this.movieService.fetchMovies();
     }
 }

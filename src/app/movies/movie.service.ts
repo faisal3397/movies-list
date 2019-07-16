@@ -1,5 +1,5 @@
 import { Movie } from './movie.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
@@ -26,9 +26,10 @@ export class MovieService {
             take(1),
             exhaustMap(user => {
                 return this.httpClient.
-                get<Movie[]>(`https://movies-list-56684.firebaseio.com/movies.json?auth=${user.token}`)
-            }),tap( responseData => {
+                get<Movie[]>(`http://localhost:8080/api/movies/`);
+            }), tap( responseData => {
                     if (responseData != null) {
+                        console.log(responseData);
                         this.setMovies(responseData);
                     }
                 })
@@ -40,8 +41,8 @@ export class MovieService {
             take(1),
             exhaustMap(user => {
                 return this.httpClient.
-                get<Movie[]>(`https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`)
-            }),tap( responseData => {
+                get<Movie[]>(`https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`);
+            }), tap( responseData => {
                     if (responseData != null) {
                         this.setWatchlist(responseData);
                     }
@@ -49,16 +50,12 @@ export class MovieService {
         );
     }
 
-    storeMovies() {
-        const storedMovies = this.getMovies();
-
-        return this.authService.user.pipe(
-            exhaustMap(user => {
-                return this.httpClient.put(
-                `https://movies-list-56684.firebaseio.com/movies.json?auth=${user.token}`, storedMovies)
-            })
-        )
+    storeMovie(movie) {
+        this.httpClient.post(`http://localhost:8080/api/movies/`, movie).subscribe(res => {
+            console.log('Movie Was Stored', res)
+        });
     }
+
 
     addToWatchlist(movie: Movie) {
         let count = 0;
@@ -72,7 +69,7 @@ export class MovieService {
             return this.authService.user.pipe(
                 exhaustMap(user => {
                     return this.httpClient.put(
-                    `https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`, this.watchList)
+                    `https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`, this.watchList);
                 })
             );
         } else {
@@ -86,7 +83,7 @@ export class MovieService {
         return this.authService.user.pipe(
             exhaustMap(user => {
                 return this.httpClient.put(
-                `https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`, this.watchList)
+                `https://movies-list-56684.firebaseio.com/watchlist.json?auth=${user.token}`, this.watchList);
             })
         );
     }
@@ -122,8 +119,8 @@ export class MovieService {
     createMovie(id: number, title: string, year: number, genre: string, plot: string, posterUrl: string) {
         const newMovie = new Movie(id, title, year, genre, plot, posterUrl);
         if (this.titleExist(newMovie.title) === 0) {
-            this.movies.push(newMovie);
-            this.storeMovies().subscribe();
+            // this.movies.push(newMovie);
+            this.storeMovie(newMovie);
         } else {
             console.log('movie exists');
         }
