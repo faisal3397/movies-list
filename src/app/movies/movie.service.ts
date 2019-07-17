@@ -29,12 +29,15 @@ export class MovieService {
                 get<Movie[]>(`http://localhost:8080/api/movies/`);
             }), tap( responseData => {
                     if (responseData != null) {
+                        // console.log(responseData._embedded.movies);
+                        // this.setMovies(responseData._embedded.movies);
                         console.log(responseData);
                         this.setMovies(responseData);
                     }
                 })
         );
     }
+
 
     fetchWatchlist() {
         return this.authService.user.pipe(
@@ -119,7 +122,7 @@ export class MovieService {
     createMovie(id: number, title: string, year: number, genre: string, plot: string, posterUrl: string) {
         const newMovie = new Movie(id, title, year, genre, plot, posterUrl);
         if (this.titleExist(newMovie.title) === 0) {
-            // this.movies.push(newMovie);
+            this.movies.push(newMovie);
             this.storeMovie(newMovie);
         } else {
             console.log('movie exists');
