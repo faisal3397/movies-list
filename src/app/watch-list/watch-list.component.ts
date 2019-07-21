@@ -18,7 +18,6 @@ export class WatchListComponent implements OnInit {
     this.watchlistMovies = this.movieService.watchList;
 
     this.localizationService.langSelected.subscribe( value => {
-      console.log('Subscription Value: ', value);
       this.lang = value;
     });
   }

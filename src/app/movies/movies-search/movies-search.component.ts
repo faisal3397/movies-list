@@ -23,7 +23,7 @@ export class MoviesSearchComponent implements OnInit {
     });
 
     this.localizationService.langSelected.subscribe( value => {
-      console.log('Subscription Value: ', value);
+      // console.log('Subscription Value: ', value);
       this.lang = value;
     });
   }

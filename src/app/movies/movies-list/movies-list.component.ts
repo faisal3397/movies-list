@@ -16,7 +16,7 @@ export class MoviesListComponent implements OnInit {
   ngOnInit() {
     this.movies = this.movieService.movies;
     this.localizationService.langSelected.subscribe( value => {
-      console.log('Subscription Value: ', value);
+      // console.log('Subscription Value: ', value);
       this.lang = value;
     });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Renderer2, OnChanges } from '@angular/core';
 import { MovieService } from '../movies/movie.service';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -27,10 +27,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
 
     this.localizationService.langSelected.subscribe( value => {
-      console.log('Subscription Value: ', value);
+      console.log('Header Subscription Value: ', value);
       this.lang = value;
     });
   }
+
   onSelect(page: string){
     this.pageSelected.emit(page)
   }

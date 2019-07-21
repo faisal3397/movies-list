@@ -13,7 +13,7 @@ export class MoviesStartComponent implements OnInit {
 
   ngOnInit() {
     this.localizationService.langSelected.subscribe( value => {
-      console.log('Subscription Value: ', value);
+      // console.log('Subscription Value: ', value);
       this.lang = value;
     });
   }
